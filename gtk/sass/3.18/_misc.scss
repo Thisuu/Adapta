@@ -313,6 +313,15 @@ NautilusTrashBar {
   box-shadow: none;
 }
 
+ConversationViewer > GtkPaned > GtkOverlay > GtkScrolledWindow {
+  .undershoot { // remove undershoot
+    &.top,
+    &.bottom,
+    &.left,
+    &.right { background-image: none; }
+  }
+}
+
 
 /************
  * Epiphany *
@@ -757,6 +766,93 @@ EvAnnotationWindow {
       border-radius: 100px;
       outline-radius: 100px;
       color: $fixed_fg_color;
+    }
+  }
+}
+
+
+/*****************
+ * Gnome-weather *
+ *****************/
+
+Gjs_WeatherWidget {
+  .frame > GtkGrid > GtkGrid > GtkGrid {
+    .osd.linked.stack-switcher {
+      background-color: gtkopacity($dark_color, 0.9);
+      box-shadow: $z-depth-1;
+
+      > .button.text-button { // remove underlines
+        &,
+        &:hover { border-image: none; }
+        &:checked {
+          border-image: -gtk-gradient(radial,
+                                      center bottom, 0,
+                                      center bottom, 0.5,
+                                      to($selected_bg_color),
+                                      to(transparent))
+                                      0 0 2 / 0 0 2px;
+        }
+      }
+    }
+
+    .osd.button {
+      padding: 1em;
+      border-radius: 100px;
+      outline-radius: 100px;
+      background-color: gtkopacity($dark_color, 0.9);
+    }
+
+    GtkStack > GtkScrolledWindow {
+      .undershoot { // remove undershoot
+        &.top,
+        &.bottom,
+        &.left,
+        &.right { background-image: none; }
+      }
+    }
+  }
+
+  Gjs_WeeklyForecastFrame {
+    background: transparent;
+    background-image: linear-gradient(to bottom,
+                                      gtkopacity($dark_color, 0.9));
+  }
+}
+
+
+/**************
+ * Gnome-todo *
+ **************/
+
+GtdWindow {
+  > .header-bar {
+    > GtkMenuButton.button {
+      // force using square-button
+      &:not(.image-button):not(.suggested-action):not(.destructive-action) {
+        border-radius: 2px;
+        outline-radius: 2px;
+        font-weight: 700;
+      }
+    }
+
+    > GtkColorButton.button {
+      // force using square-button
+      &:not(.suggested-action):not(.destructive-action) {
+        border-radius: 2px;
+        outline-radius: 2px;
+      }
+    }
+  }
+
+  > GtdStoragePopover {
+    // force using flat-style
+    .button.text-button:not(.suggested-action) {
+      @include button(flat-normal);
+      &:hover { @include button(flat-hover); }
+      &:active { @include button(flat-active); }
+      &:insensitive { @include button(flat-insensitive); }
+      &:checked { @include button(flat-checked); }
+      &:checked:insensitive { @include button(flat-checked-insensitive); }
     }
   }
 }

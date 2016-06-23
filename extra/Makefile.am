@@ -9,7 +9,17 @@ chrome_nokto_file = $(chromedir)/adapta-nokto-theme.crx
 plankdir   = $(srcdir)/plank
 plank_file = $(plankdir)/dock.theme
 
-install-data-local:
+# ******************
+# * Generate files *
+# ******************
+
+all:
+
+# *****************
+# * Install files *
+# *****************
+
+install-data-local: all
 if ENABLE_CHROME
 	$(MKDIR_P) $(adaptadir)/chrome
 	$(MKDIR_P) $(noktodir)/chrome
@@ -24,6 +34,10 @@ if ENABLE_PLANK
 	ln -sf ../Adapta/plank $(noktodir)/plank
 endif
 
+# *******************
+# * Uninstall files *
+# *******************
+
 uninstall-local:
 if ENABLE_CHROME
 	test -e $(noktodir)/chrome && rm -rfv $(noktodir)/chrome
@@ -34,3 +48,12 @@ if ENABLE_PLANK
 	test -e $(noktodir)/plank && rm -rfv $(noktodir)/plank
 	test -e $(adaptadir)/plank && rm -rfv $(adaptadir)/plank
 endif
+
+# ****************************
+# * Clean up generated files *
+# ****************************
+
+CLEANFILES =
+
+DISTCLEANFILES = \
+	$(CLEANFILES)

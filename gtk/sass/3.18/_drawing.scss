@@ -1,3 +1,14 @@
+/*
+ *  This file is part of adapta-gtk-theme
+ *
+ * Copyright (C) 2016 Tista <tista.gma500@gmail.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ */
+
 //
 // Drawing mixins
 //
@@ -224,7 +235,6 @@ $toolbar-shadow-dark: inset 0 1px 1px rgba(0, 0, 0, 0.20),
                                 to($track_color),
                                 to(transparent))
                                 0 0 1 / 0 0 1px;
-    background-color: transparent;
     color: $secondary_fg_color;
   }
   @if $t==focus {
@@ -247,7 +257,6 @@ $toolbar-shadow-dark: inset 0 1px 1px rgba(0, 0, 0, 0.20),
                                 to($track_color),
                                 to(transparent))
                                 0 0 1 / 0 0 1px;
-    background-color: transparent;
     color: $insensitive_fg_color;
   }
   @if $t==flat-normal {
@@ -283,6 +292,7 @@ $toolbar-shadow-dark: inset 0 1px 1px rgba(0, 0, 0, 0.20),
                                 to($track_color),
                                 to(transparent))
                                 0 0 1 / 0 0 1px;
+    background-color: transparent;
     color: $insensitive_fg_color;
   }
 }
